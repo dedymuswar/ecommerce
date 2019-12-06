@@ -1,0 +1,272 @@
+/*************************
+  1.General
+*************************/
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,300i,400,500,500i,700,700i,900,900i');
+body {
+  background: #fff;
+  color: #999999;
+  font-family: sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 24px;
+}
+img{
+  max-width: 100%;
+  -webkit-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+*::before,
+*::after,
+a,
+button,
+span,
+input,
+textarea,
+.btn {
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+a:focus,
+.btn:focus {
+  text-decoration: none;
+  outline: none;
+}
+a:focus,
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+a,
+button,
+input,
+textarea {
+  color: #999999;
+  outline: medium none;
+}
+.uppercase { 
+  text-transform: uppercase
+}
+.capitalize { 
+  text-transform: capitalize
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #3f3f3f;
+  margin-top: 0px;
+  font-style: normal;
+  font-weight: 400;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a { 
+  color: inherit 
+}
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+li { 
+  list-style: none; 
+}
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #999999;
+  margin-bottom: 15px;
+}
+
+
+
+
+/* -----------------------------------
+  02. Header Section
+--------------------------------------*/
+
+/*hero section css here*/
+.buy-btn {
+  border: 2px solid #ffffff;
+  border-radius: 50px;
+  color: #ffffff;
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 24px;
+  margin-top: 0;
+  padding: 6px 35px;
+  text-transform: uppercase;
+}
+.stick .buy-btn {
+  border: 2px solid #3498db ;
+  color: #3498db ;
+    margin-top: 3px;
+}
+.buy-btn:hover {
+  background-color: #3498db ;
+  border-color: #3498db ;
+  color: #ffffff;
+}
+.hero-section{
+    background: #222;
+    padding: 110px 0 68px;
+}
+.hero-content h1 {
+	font-size: 36px;
+	line-height: 39px;
+	font-weight: 500;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 35px 0;
+	margin-bottom: 0;
+	letter-spacing: 4px;
+	word-spacing: 7px;
+}
+.hero-content a img{
+    max-width: 190px;
+}
+/*section title css here*/
+.section_title{
+    padding-top: 130px;
+    padding-bottom: 52px;
+    background: #f2f2f2;
+}
+.section_content {
+	text-align: center;  
+}
+.section_content h2 {
+	font-weight: 500;
+	font-size: 30px;
+	margin-bottom: 15px;
+	color: #2e2e2e;
+	text-transform: capitalize;
+}
+.section_content p {
+	font-size: 16px;
+	line-height: 30px;
+	color: #2e2e2e;
+	margin-bottom: 0;
+}
+
+/* demo-section css here */
+.demo-section.section {
+	padding: 0 64px 55px;
+    background: #f2f2f2;
+}
+.demo-item {
+	text-align: center;
+	margin-bottom: 80px;
+}
+.demo-item .image {
+  display: block;
+  position: relative;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+.demo-item:hover .image {
+    opacity: 0.8;
+}
+
+
+.demo-item .image img {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.demo-item .title a {
+  text-transform: uppercase;
+	font-weight: bold;
+	font-size: 13px;
+	line-height: 40px;
+	border: 2px solid #ccc;
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 75px;
+	margin-top: 30px;
+	border-radius: 2px;
+}
+.demo-item:hover .title a{
+    color: #0063d1;
+    border-color: #0063d1;
+}
+
+
+
+
+/*footer area css here*/
+.footer_content {
+	text-align: center;
+}
+
+
+.copyright_area {
+	text-align: center;
+}
+
+.footer_content h3 {
+	text-transform: uppercase;
+	font-size: 36px;
+	color: #222;
+	margin-bottom: 10px;
+    line-height: 51px;
+	font-weight: 400;
+}
+
+.footer_content p {
+	color: #222;
+	font-size: 24px;
+}
+
+
+.footer_content a {
+	display: inline-block;
+	line-height: 55px;
+	border-radius: 3px;
+	text-transform: uppercase;
+	background: #0063d1;
+	color: #fff;
+	padding: 0 46px;
+	margin: 65px 0 0;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	font-weight: 500;
+	font-size: 12px;
+}
+
+.footer_content a:hover{
+    opacity: 0.7;
+}
+.footer-top {
+	padding: 110px 0;
+}
+.copyright_area p {
+	color: #fff;
+	margin-bottom: 0;
+    text-transform: capitalize;
+}
+.copyright_area p a{
+    color: #fff;
+}
+.copyright_area p a:hover{
+    text-decoration: underline;
+}
+.copyright_area {
+	text-align: center;
+	padding: 31px 0;
+    background: #222;
+}
+
+
+
+
+
