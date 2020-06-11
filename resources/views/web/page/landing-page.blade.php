@@ -2,6 +2,8 @@
 @section('title')
 Home
 @endsection
+@section('stylesheets')
+@endsection
 @section('content')
 <div class="col-lg-9">
     <div class="home_right_section">
@@ -16,12 +18,20 @@ Home
                 <article class="single_product">
                     <figure>
                         <div class="product_thumb">
+                            @if (!empty(productthumb($item->images)[0]))
                             <a class="primary_img" href="{{route('shop.show',$item->slug)}}"><img
-                                    src="{{asset('storage/'. cropedImage($item->image, 'croped'))}}" alt=""></a>
+                                    src="{{asset('storage/'. productthumb($item->images)[0])}}" alt=""></a>
+                            @endif
+                            @if (!empty(productthumb($item->images)[1]))
                             <a class="secondary_img" href="{{route('shop.show',$item->slug)}}"><img
-                                    src="{{asset('storage/'. cropedImage($item->image, 'croped'))}}" alt=""></a>
+                                    src="{{asset('storage/'. productthumb($item->images)[1])}}" alt=""></a>
+                            @endif
                             <div class="label_product">
+                                @if ($item->newarrival)
+                                <span class="label_new">new</span>
+                                @else
                                 <span class="label_sale">sale</span>
+                                @endif
                             </div>
                             <div class="action_links">
                                 <ul>
@@ -29,23 +39,41 @@ Home
                                                 class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                     <li class="compare"><a href="#" title="compare"><span class="ion-levels"></span></a>
                                     </li>
-                                    <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box"
-                                            title="quick view"> <span class="ion-ios-search-strong"></span></a></li>
+                                    <li class="quick_button"><a href="#" data-toggle="modal" class="quick-view"
+                                            data-id="{{$item->id}}" title="quick view"> <span
+                                                class="ion-ios-search-strong"></span></a></li>
                                 </ul>
                             </div>
                             <div class="add_to_cart">
-                                <a href="cart.html" title="add to cart">Add to cart</a>
+                                {{-- <a href="cart.html" title="add to cart">Add to cart</a> --}}
+                                <form id="myform" action="{{route('cart.store')}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$item->id}}">
+                                    <input type="hidden" name="name" value="{{$item->name}}">
+                                    <input type="hidden" name="price" value="{{$item->price}}">
+                                    <button type="submit">Add to cart</button>
+                                    {{-- <a class="buton" onclick="document.getElementById('myform').submit()">Add to
+                                        cart</a> --}}
+                                </form>
                             </div>
                         </div>
-                        <figcaption class="product_content">
+                        <figcaption class="product_content grid_content">
                             <div class="price_box">
-                                <span class="old_price">{{$item->oldPrice()}}</span><br>
-                                <span class="current_price">{{$item->presentPrice()}}</span>
+                                <span class="">{{$item->name}}</span><br>
+                                <span class="current_price">{{hargaFormat($item->price)}}</span>
                             </div>
-                            <h3 class="product_name"><a href="product-details.html">
-                                    {{-- {{$item->description}} --}}
+                            <div class="product_ratings">
+                                <ul>
+                                    <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                    <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                    <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                </ul>
+                            </div>
+                            {{-- <h3 class="product_name"><a href="product-details.html">
                                     {{ Str::limit($item->description, 50, '
-                                    ...')}}</a></h3>
+                                    ...')}}</a></h3> --}}
                         </figcaption>
                     </figure>
                 </article>

@@ -14,7 +14,8 @@
                 </div>
                 <div class="middel_right_info">
                     <div class="header_wishlist">
-                        <a href="{{route('wishlist.index')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        <a href="{{route('wishlist.index')}}"><i class="fa fa-heart-o" aria-hidden="true"></i>
+                            Wishlist</a>
                         @if (Cart::instance('saveForLater')->count() > 0)
                         <span class="wishlist_quantity">{{Cart::instance('saveForLater')->count()}}</span>
                         @endif

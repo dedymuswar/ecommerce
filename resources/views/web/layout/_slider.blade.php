@@ -2,6 +2,21 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-9 offset-lg-3 col-ld-12">
+                @if (session()->has('success_message'))
+                <div class="alert alert-success">
+                    {{ session()->get('success_message')}}
+                </div>
+                @endif
+
+                @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $item)
+                        <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <div class="slider_area owl-carousel">
                     <div class="single_slider d-flex align-items-center"
                         data-bgimg="{{asset('site/junko/assets/img/slider/slider5.jpg')}}">

@@ -1,5 +1,10 @@
 @extends('web.shop')
-
+@section('stylesheets')
+<link href="{{asset('css/algolia.css')}}" rel=stylesheet />
+@endsection
+@section('title')
+Register
+@endsection
 @section('stylesheets')
 
 @endsection

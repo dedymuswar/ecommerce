@@ -42,12 +42,12 @@ $("#btn-cek").on("click", function (event) {
             var anu = $('#subtotal').text();
             console.log(anu);
             //remove comma and nol
-            var dedy =  "{{ Session::get('coupon')['discount'];}}";
+            var dedy = "{{ Session::get('coupon')['discount'];}}";
             console.log(dedy);
-            if(dedy){
+            if (dedy) {
                 // console.log(session()->has('coupon'));
                 var total = parseFloat(anu.replace(/,/g, '')) + parseInt(data.ongkir);
-            }else{
+            } else {
                 var total = parseFloat(anu.replace(/,/g, '')) + parseInt(data.ongkir);
             }
 
@@ -89,9 +89,13 @@ $('select[name="province_destination"]').on('change', function () {
             dataType: "json",
             success: function (data) {
                 $('select[name="city_destination"]').empty();
+                let kota = "";
                 $.each(data, function (key, value) {
-                    $('select[name="city_destination"]').append('<option value="' + key + '">' + value + '</option>');
+                    kota += '<option value="' + key + '">' + value + '</option>';
+                    // $('select[name="city_destination"]').append('<option value="' + key + '">' + value + '</option>');
                 });
+                let finalKotaTujuan = '<option value="">Select Kota</option>' + kota;
+                $('select[name="city_destination"]').append(finalKotaTujuan);
             }
         })
     } else {
@@ -136,7 +140,7 @@ $("#formOngkir").on("click", "#btn-checkout", function () {
                 jQuery('#dedy').show();
                 jQuery('#dedy').append('<p>' + value + '</p>');
             });
-            console.log(data.pesan);
+            // console.log(data.pesan);
             window.location = "checkout/thankyou";
         },
         error: function (data) {

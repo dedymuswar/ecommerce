@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddImageToProductsTable extends Migration
+class AddStatusToPaymentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddImageToProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('image')->after('slug');
+        Schema::table('payment', function (Blueprint $table) {
+            $table->string('status')->after('method')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddImageToProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('image');
+        Schema::table('payment', function (Blueprint $table) {
+            $table->dropColumn('status');
         });
     }
 }

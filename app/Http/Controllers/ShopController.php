@@ -15,7 +15,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $pagination = 9;
+        $pagination = 12;
         $categories = Category::all();
         if (request()->category) {
             $products = Product::with('categories')->whereHas('categories', function ($query) {
@@ -36,6 +36,20 @@ class ShopController extends Controller
 
 
         return view('web.page.shop', compact('products', 'categories'));
+    }
+
+    public function search(Request $request)
+    {
+        $categories = Category::all();
+        $request->validate([
+            'query' => 'required|min:3',
+        ]);
+        $query = $request->input('query');
+        $products = Product::where('name', 'like', "%$query%")
+            ->orWhere('description', 'like', "%$query%")
+            ->paginate(9);
+
+        return view('web.page.search-results', compact('products', 'categories'));
     }
 
     /**
@@ -70,7 +84,9 @@ class ShopController extends Controller
         $products = Product::where('slug', $slug)->firstOrFail();
         $relatedProducts = Product::where('slug', '!=', $slug)->mightAlsoLike()->get();
         $categories = Category::all();
-        return view('web.page.detail', compact('products', 'relatedProducts', 'categories'));
+
+        $stockLevel = getStockLevel($products->quantity);
+        return view('web.page.detail', compact('products', 'relatedProducts', 'categories', 'stockLevel'));
     }
 
     /**

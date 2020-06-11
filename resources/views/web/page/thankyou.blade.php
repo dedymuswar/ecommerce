@@ -1,6 +1,8 @@
 @extends('web.shop')
+@section('title')
+Thank you
+@endsection
 @section('stylesheets')
-
 @endsection
 @section('content')
 <div class="container mt-30 mb-30">

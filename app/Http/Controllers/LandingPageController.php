@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\City;
 use App\Courier;
+use App\Hotdeal;
+use App\Posts;
 use App\Product;
 use App\Province;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
@@ -18,8 +20,11 @@ class LandingPageController extends Controller
      */
     public function index()
     {
+        $newArrivals = Product::take(9)->where('newarrival', true)->get();
+        $posts = Posts::take(3)->inRandomOrder()->get();
         $products = Product::where('featured', true)->inRandomOrder()->get();
-        return view('web.page.landing-page', compact('products'));
+        $hotdeals = Hotdeal::take(3)->orderBy('untilDate', 'desc')->get();
+        return view('web.page.landing-page', compact('products', 'posts', 'newArrivals','hotdeals'));
     }
 
     /**

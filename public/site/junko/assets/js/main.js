@@ -604,15 +604,15 @@
     /*---slider-range here---*/
     $( "#slider-range" ).slider({
         range: true,
-        min: 0,
-        max: 500,
-        values: [ 0, 500 ],
+        min: 100,
+        max: 10000,
+        values: [ 100, 10000 ],
         slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        $( "#amount" ).val( "Rp" + ui.values[ 0 ]+"K" + " - Rp" + ui.values[ 1 ]+"K" );
        }
     });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-       " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+    $( "#amount" ).val( "Rp" + $( "#slider-range" ).slider( "values", 0 )+"K" +
+       " - Rp" + $( "#slider-range" ).slider( "values", 1 ) +"K" );
     
     /*---niceSelect---*/
      $('.niceselect_option').niceSelect();

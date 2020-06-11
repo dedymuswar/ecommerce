@@ -31,6 +31,7 @@
     
 
 -----------------------------------------------------------------------------------*/
+
 @import url("https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i");
 * {
   box-sizing: border-box;
@@ -87,7 +88,7 @@ h3 {
 h4 {
   font-size: 16px;
   line-height: 19px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 h5 {
@@ -148,6 +149,60 @@ figure {
   padding: 0;
   margin: 0;
 }
+
+
+
+
+/* Added CSS */
+.badge {
+  display: inline-block;
+  padding: .25em .4em;
+  font-size: 100%;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+}
+
+.badge-primary {
+  color: #fff;
+  background-color: #007bff;
+}
+.badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+.badge-success {
+  color: #fff;
+  background-color: #28a745;
+}
+.badge-danger {
+  color: #fff;
+  background-color: #dc3545;
+}
+.badge-warning {
+  color: #212529;
+  background-color: #ffc107;
+}
+.badge-info {
+  color: #fff;
+  background-color: #17a2b8;
+}
+.badge-light {
+  color: #fff;
+  background-color: #f8f9fa;
+}
+.badge-dark {
+  color: #fff;
+  background-color: #344a40;
+}
+
+
+
+
+
 
 /*-- 
     - Common Classes
@@ -1247,16 +1302,21 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 20px;
   text-align: center;
   color: #fff;
-  background: #0063d1;
+  background:#0063d1;
   border-radius: 50%;
   top: -7px;
   font-size: 11px;
 }
 .header_wishlist a {
-  font-size: 20px;
-  font-weight: 400;
+  /* font-size: 20px;
+  font-weight: 500;
   text-transform: capitalize;
-  display: block;
+  display: block; */
+
+  font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: block;
 }
 .header_wishlist a:hover {
   color: #0063d1;
@@ -1264,6 +1324,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .header_wishlist a span {
   font-size: 32px;
   padding-right: 4px;
+}
+.header_wishlist > a i.fa-heart-o {
+  font-size: 20px;
+  padding-right: 10px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_wishlist a span {
@@ -1286,7 +1350,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 20px;
   text-align: center;
   color: #fff;
-  background: #0063d1;
+  background: red;
   border-radius: 50%;
   top: -7px;
   font-size: 11px;
@@ -1334,7 +1398,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .mini_cart {
   position: absolute;
-  min-width: 355px;
+  min-width: 320px;
   padding: 0 28px;
   background: #fff;
   border: 0;
@@ -1374,7 +1438,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .cart_img {
-  width: 90px;
+  width: 40px;
   margin-right: 10px;
   border: 1px solid transparent;
 }
@@ -1397,7 +1461,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .cart_info a {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 20px;
   display: block;
   margin-bottom: 6px;
@@ -1423,7 +1487,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .cart_remove a {
-  font-size: 15px;
+  font-size: 12px;
   border: 1px solid #ebebeb;
   width: 20px;
   height: 20px;
@@ -1455,7 +1519,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   justify-content: space-between;
 }
 .cart_total span {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
 }
 .cart_total span.price {
@@ -1485,7 +1549,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-align: center;
   line-height: 20px;
   margin-bottom: 0;
-  padding: 13px 0px 11px;
+  padding: 6px 0px 4px;
   border: 1px solid #ebebeb;
 }
 .cart_button a:hover {
@@ -2714,7 +2778,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .section_title h2 {
   font-size: 20px;
   line-height: 17px;
-  font-weight: 500;
+  font-weight: 400;
   display: inline-block;
   margin-bottom: 0;
   position: relative;
@@ -2826,6 +2890,36 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 50%;
 }
 
+.label_product_disc {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  line-height: 60px;
+  width: 60px;
+  height: 60px;
+  box-shadow: 2px;
+}
+
+.label_product_disc span.label_disc {
+  text-transform: capitalize;
+  color: #ffffff;
+  background: #db0202;
+  font-size: 10px;
+  text-align: center;
+  display: block;
+  border-radius: 50%;
+}
+
+.label_product span.label_new {
+  text-transform: capitalize;
+  color: #ffffff;
+  background: #db365a;
+  font-size: 10px;
+  text-align: center;
+  display: block;
+  border-radius: 50%;
+}
+
 .single_product {
   padding: 20px 15px;
   border: 2px solid transparent;
@@ -2853,7 +2947,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-align: center;
 }
 .product_content h3 {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 19px;
   margin-bottom: 0;
 }
@@ -2933,19 +3027,27 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 5px;
 }
 
-.add_to_cart button {
+.add_to_cart form button {
   line-height: 16px;
   text-align: center;
   font-size: 12px;
   padding: 12px 40px;
   text-transform: uppercase;
+  box-shadow: none;
   font-weight: 500;
   display: inline-block;
   transition: all 0.5s ease;
   background: #0063d1;
   color: #ffffff;
   border-radius: 5px;
+  border: 1px solid #0063d1;
 }
+
+.add_to_cart form button:hover {
+  background: #1953b4;
+  color: #fff;
+}
+
 .add_to_cart a:hover {
   background: #1953b4;
 }
@@ -2958,7 +3060,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .price_box {
-  margin-bottom: 13px;
+  margin-bottom: 7px;
 }
 .price_box span.old_price {
   text-decoration: line-through;
@@ -3504,8 +3606,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-right: 0;
 }
 .product_ratings ul li a {
-  color: #0063d1;
-  font-size: 21px;
+  /* color: #0063d1; */
+  color: #f9b214;
+  font-size: 18px;
 }
 
 .tab_btn_container {
@@ -3753,9 +3856,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .product_four_area button {
-  right: 25px;
+  right: 13px;
   left: auto;
-  top: -56px;
+  top: -10px;
   opacity: inherit;
   visibility: inherit;
   font-size: 26px;
@@ -5230,6 +5333,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   float: right;
   text-align: right;
   line-height: 31px;
+  /* padding-right: 53px; */
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .widget_list.widget_filter form input {
@@ -5445,7 +5549,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: inline-block;
 }
 .product_ratting ul li a {
-  color: #0063d1;
+  /* color: #0063d1; */
+  color: #f9b214;
 }
 
 @media only screen and (max-width: 767px) {
@@ -5611,7 +5716,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .grid_content .product_ratings {
-  margin-bottom: 11px;
+  margin-bottom: 7px;
 }
 .grid_content .product_ratings ul {
   justify-content: center;
@@ -6059,13 +6164,20 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_nav ul li a:hover {
   background: #242424;
 }
+.product_variant.stock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
 .product_variant.quantity {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 @media only screen and (max-width: 767px) {
   .product_variant.quantity {
@@ -6113,6 +6225,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-transform: capitalize;
   min-width: 270px;
 }
+
+.product_variant.quantity button.disable{
+  border: 0;
+  font-size: 16px;
+  margin-left: 20px;
+  background: #ebebfa;
+  height: 42px;
+  line-height: 42px;
+  text-transform: capitalize;
+  min-width: 270px;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .product_variant.quantity button {
     min-width: 240px;
@@ -6132,8 +6256,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_variant.quantity button:hover {
   background: #3E444A;
 }
+
+.product_variant.quantity button.disable:hover {
+  background: #ebebfa;
+}
 .product_variant.color {
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 }
 @media only screen and (max-width: 767px) {
   .product_variant.color {
@@ -6830,8 +6958,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .table_desc .cart_page table tbody tr td.product-price {
   min-width: 130px;
   color: #242424;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
 }
 .table_desc .cart_page table tbody tr td.product_quantity {
   min-width: 180px;
@@ -6957,7 +7085,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #ffffff;
   line-height: 36px;
   padding: 5px 15px;
-  background: #242424;
+  background: #0063d1;
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 500;
@@ -6979,11 +7107,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   justify-content: space-between;
 }
 .cart_subtotal p {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
+  padding-left: 58px;
+  padding-right: 32px;
 }
 .cart_subtotal p.cart_amount {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
 }
 @media only screen and (max-width: 767px) {
@@ -7020,18 +7150,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .checkout_btn a {
-  background: #0063d1;
+  background: #242424;
   color: #ffffff;
   font-size: 15px;
   padding: 3px 14px;
   line-height: 30px;
-  font-weight: 500;
+  font-weight: 400;
   display: inline-block;
   text-transform: capitalize;
   margin-bottom: 0;
 }
 .checkout_btn a:hover {
-  background: #242424;
+  background:  #0063d1;
   color: #ffffff;
 }
 
@@ -7274,7 +7404,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-transform: capitalize;
   color: #ffffff;
   background: #0063d1;
-  font-weight: 500;
+  font-weight: 400;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   margin-bottom: 0;

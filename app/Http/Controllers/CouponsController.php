@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Coupon;
 use Illuminate\Http\Request;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Jobs\UpdateCoupon;
 
 class CouponsController extends Controller
 {
@@ -23,12 +23,9 @@ class CouponsController extends Controller
             return redirect()->route('checkout.index')->with('errors_message', 'Invalid coupon code. Please try again.');
         }
 
-        session()->put('coupon', [
-            'name' => $coupon->code,
-            'discount'  => $coupon->discount(Cart::subtotal())
-        ]);
+        dispatch_now(new UpdateCoupon($coupon));
 
-        return redirect()->route('checkout.index')->with('success_message', 'Coupon has been applied!');
+        return redirect()->route('cart.index')->with('success_message', 'Coupon has been applied!');
     }
     /**
      * Remove the specified resource from storage.
@@ -39,6 +36,6 @@ class CouponsController extends Controller
     public function destroy()
     {
         session()->forget('coupon');
-        return redirect()->route('checkout.index')->with('success_message', 'Coupon has been remove');
+        return redirect()->route('cart.index')->with('success_message', 'Coupon has been remove');
     }
 }

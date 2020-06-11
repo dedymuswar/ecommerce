@@ -2,6 +2,8 @@
 @section('title')
 Detail
 @endsection
+@section('stylesheets')
+@endsection
 @section('content')
 <div class="product_details product_sidebar mt-60">
     <div class="container">
@@ -13,10 +15,12 @@ Detail
                         <div class="col-lg-6 col-md-6">
                             <div class="product-details-tab">
                                 <div id="img-1" class="zoomWrapper single-zoom">
+                                    @if ($products->images)
                                     <a href="#">
-                                        <img id="zoom1" src="{{asset('storage/'. $products->image)}}"
-                                            data-zoom-image="{{asset('storage/'. $products->image)}}" alt="big-1">
+                                        <img id="zoom1" src="{{asset('storage/'. cropedImage(productthumb($products->images)[0], 'medium'))}}"
+                                            data-zoom-image="{{asset('storage/'. cropedImage(productthumb($products->images)[0], 'medium'))}}" alt="big-1">
                                     </a>
+                                    @endif
                                 </div>
                                 <div class="single-zoom-thumb">
                                     <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
@@ -59,16 +63,17 @@ Detail
 
                                 </div>
                                 <div class="price_box">
-                                    <span class="current_price">{{$products->presentPrice()}}</span>
-                                    <span class="old_price">{{$products->oldPrice()}}</span>
-
+                                    <span class="current_price">{{hargaFormat($products->price)}}</span> |
+                                    @if ($products->old_price)
+                                    <span class="old_price">{{hargaFormat($products->old_price)}}</span>
+                                    @endif
                                 </div>
-                                <div class="product_desc">
-                                    <p>{{$products->description}}
+                                {{-- <div class="product_desc">
+                                    <p>In stock
                                     </p>
-                                </div>
+                                </div> --}}
                                 <div class="product_variant color">
-                                    <h3>Available Options</h3>
+                                    <h3>Pilihan Warna</h3>
                                     <label>color</label>
                                     <ul>
                                         <li class="color1"><a href="#"></a></li>
@@ -77,25 +82,39 @@ Detail
                                         <li class="color4"><a href="#"></a></li>
                                     </ul>
                                 </div>
+                                {{-- <div class="product_variant stock">
+                                    {!!$stockLevel!!}
+                                </div> --}}
                                 <div class="product_variant quantity">
-                                    <label>quantity</label>
-                                    <input min="1" max="100" value="1" type="number">
+                                    {!!$stockLevel!!}
                                     <form action="{{route('cart.store')}}" method="POST">
                                         @csrf
                                         <input type="hidden" name="id" value="{{$products->id}}">
                                         <input type="hidden" name="name" value="{{$products->name}}">
                                         <input type="hidden" name="price" value="{{$products->price}}">
+                                        @if ($products->quantity == 0 )
+                                        <button class="button disable" type="submit" disabled>Add to cart</button>
+                                        @else
                                         <button class="button" type="submit">Add to cart</button>
+                                        @endif
                                     </form>
                                 </div>
-                                <div class=" product_d_action">
+                                {{-- <div class=" product_d_action">
                                     <ul>
-                                        <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li>
                                         <li><a href="#" title="Add to wishlist">+ Compare</a></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                                 <div class="product_meta">
-                                    <span>Category: <a href="#">Clothing</a></span>
+                                    <span>Category:
+                                        @if (count($products->categories) > 0)
+                                        @foreach ($products->categories as $ite)
+                                            <a href="{{ route('shop.index', ['category' => $ite->slug]) }}">{{ $ite->name }}</a>
+                                            {{ $loop->last ? '' : ',' }}
+                                        @endforeach
+                                        @else
+                                            (Not have category)
+                                        @endif
+                                    </span>
                                 </div>
 
                                 <div class="priduct_social">

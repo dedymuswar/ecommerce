@@ -2,18 +2,23 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use Searchable;
+    protected $fillable = ['quantity'];
+
+
     public function presentPrice()
     {
-        return money_format('Rp%i', $this->price);
+        return money_format('Rp %i ', $this->price);
     }
 
     public function oldPrice()
     {
-        return money_format('Rp%i', $this->old_price);
+        return money_format('Rp %i  ', $this->old_price);
     }
 
     public function scopeMightAlsoLike($query)
@@ -23,6 +28,16 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'category_product');
+    }
+
+    public function Orders()
+    {
+        return $this->belongsToMany('App\Order','order_product')->withPivot('quantity');
+    }
+
+    public function hotdeal()
+    {
+        return $this->hasMany('App\Hotdeal');
     }
 }

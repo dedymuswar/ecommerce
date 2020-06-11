@@ -1,4 +1,6 @@
 @extends('web.shop')
+@section('stylesheets')
+@endsection
 @section('content')
 <!--wishlist area start -->
 <div class="wishlist_area mt-60">
@@ -42,11 +44,13 @@
                                         <form action="{{route('wishlist.destroy', $item->rowId)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn-sm btn-danger" type="submit"><i class="fa fa-trash-o"></i> Remove</button>
+                                            <button class="btn-sm btn-danger" type="submit"><i
+                                                    class="fa fa-trash-o"></i> Remove</button>
                                         </form>
                                         {{-- <a href="#">X</a> --}}
                                     </td>
                                     <td class="product_thumb"><a href="{{route('shop.show',$item->model->slug)}}"><img
+                                                style="width:45px"
                                                 src="{{asset('storage/'. cropedImage($item->model->image, 'small'))}}"
                                                 alt=""></a>
                                     </td>
@@ -56,7 +60,8 @@
                                     <td class="product_total">
                                         <form action="{{route('wishlist.switchtocart', $item->rowId)}}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn-sm btn-warning"><i class="fa fa-heart-o"></i> Move To Cart</button>
+                                            <button type="submit" class="btn-sm btn-secondary"><i
+                                                    class="fa fa-heart-o"></i> Move To Cart</button>
                                         </form>
                                         {{-- <a href="#">Move To Cart</a> --}}
                                     </td>

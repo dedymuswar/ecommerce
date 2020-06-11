@@ -25,5 +25,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        view()->composer('web.layout._header', function ($view) {
+            $view->with('kategoris', \App\Category::all());
+        });
+
+        // SIDEBAR
+        view()->composer('web.layout.blog._sidebar', function ($view) {
+            $view->with('recent', \App\Posts::RecentPosts());
+        });
     }
 }

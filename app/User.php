@@ -2,21 +2,21 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends \TCG\Voyager\Models\User
 {
-    use Notifiable;
-
+    use Notifiable, Searchable;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','provider','provider_id'
     ];
 
     /**
@@ -40,5 +40,14 @@ class User extends \TCG\Voyager\Models\User
     public function orders()
     {
         return $this->hasMany('App\Orders');
+    }
+    public function posts()
+    {
+        return $this->hasMany('App\Posts');
+    }
+
+    public function profil()
+    {
+        return $this->hasOne('App\Profil');
     }
 }
